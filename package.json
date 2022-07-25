@@ -1,0 +1,18 @@
+{
+  "name": "my-react-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "exit 0",
+    "lint": "eslint --ext js --ext jsx src",
+    "start": "webpack serve --hot --mode development --devtool eval-source-map --open",
+    "start:watch": "npm run start",
+    "build": "webpack --devtool source-map"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {}
+}
