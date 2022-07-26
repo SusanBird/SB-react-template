@@ -1,3 +1,9 @@
+import styles from './Home.css';
+
 export default function Home() {
-    return <p>I am the Home page</p>;
-  }
+    return (
+        <div className={styles.Home}>
+          <p>Home page stuff</p>
+        </div>
+      );
+}

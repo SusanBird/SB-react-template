@@ -1,0 +1,19 @@
+.Navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  
+    @media (min-width: 750px) {
+      flex-direction: row;
+    }
+  
+    a {
+      padding: 3px 7px;
+      color: initial;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 0.8em;
+    }
+  }
+  
