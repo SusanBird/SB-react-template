@@ -8,6 +8,7 @@
     "lint": "eslint --ext js --ext jsx src",
     "start": "webpack serve --hot --mode development --devtool eval-source-map --open",
     "start:watch": "npm run start",
+    "start:open": "npm run start -- --open",
     "build": "webpack --devtool source-map"
   },
   "keywords": [],
