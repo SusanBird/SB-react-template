@@ -1,16 +1,25 @@
 .Menu {
     position: relative;
-    height: 30px;
-    width: 30px;
-    background: #ffd6ba;
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+    user-select: none;
+    border: 0;
+    &:focus {
+      outline: 0;
+    }
   
     &::before {
+      position: relative;
+      top: -1px;
       content: '☰';
+      font-size: 1.8em;
     }
   
     &.Open {
       &::before {
         content: '✕';
+        top: 2px;
       }
   
       .MenuContainer {
@@ -21,7 +30,8 @@
     .MenuContainer {
       position: absolute;
       top: 100%;
-      padding: 20px 10px;
+      height: calc(100vh - 35px);
+      padding: 20px 50px 0 20px;
       background: #89b0ae;
       color: faf9f9;
       transform: translateX(-100%);
