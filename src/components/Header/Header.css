@@ -1,7 +1,8 @@
 .Header {
     position: sticky;
     top: 0;
-    background: rgb(228, 113, 5);
+    background: #555B6E;
+    color: #faf9f9;
   
     height: 30px;
   
@@ -29,4 +30,3 @@
     }
   }
 
-  //extra comment
