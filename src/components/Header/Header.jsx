@@ -1,6 +1,7 @@
 import Menu from './Menu.jsx';
 import Navigation from './Navigation.jsx';
 import styles from './Header.css';
+import User from './User.jsx';
 
 export default function Header() {
   return (
@@ -15,7 +16,7 @@ export default function Header() {
         <Navigation />
       </div>
 
-      <div>User</div>
+      <User />
     </header>
   );
 }
