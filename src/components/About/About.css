@@ -1,0 +1,9 @@
+.About {
+    padding: var(--padding);
+  
+    form {
+      background: var(--color-4);
+      padding: 30px 40px;
+      width: 400px;
+    }
+  }
