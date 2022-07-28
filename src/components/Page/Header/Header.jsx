@@ -10,7 +10,7 @@ export default function Header() {
         <SlideoutMenu />
       </div>
 
-      <h1>My App</h1>
+      <h1>SB Custom React Template</h1>
 
       <div className={styles.NavigationContainer}>
         <Navigation />
