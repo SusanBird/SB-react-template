@@ -12,7 +12,7 @@
       background: lightsteelblue;
       display: grid;
       width: max-content;
-      padding: 20px;
+      padding: var(--padding);
       gap: 10px;
   
       display: none;
