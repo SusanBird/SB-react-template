@@ -11,7 +11,7 @@
     outline: 0;
   }
 
-  background: var(--button-color);
+  background: var(--offset-color);
 
   &::before {
     position: relative;

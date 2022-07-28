@@ -45,3 +45,10 @@
       resize: vertical;
     }
   }
+
+.FormButton {
+    padding: 10px 15px;
+    background: var(--color-2);
+    border: 1px solid var(--header-color);
+    cursor: pointer;
+  }

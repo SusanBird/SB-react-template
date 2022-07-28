@@ -2,7 +2,7 @@
     padding: var(--padding);
   
     form {
-      background: var(--color-4);
+      background: var(--offset-color);
       padding: 30px 40px;
       width: 400px;
     }

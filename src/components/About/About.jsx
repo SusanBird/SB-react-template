@@ -3,6 +3,7 @@ import {
   SelectControl,
   TextAreaControl,
   CheckboxControl,
+  FormButton,
 } from '../Forms/FormControls.jsx';
 
 import styles from './About.css';
@@ -36,9 +37,12 @@ export default function About() {
 
         <CheckboxControl label="Easy Mode?" text="Yes" />
 
-        <TextAreaControl label="bio" placeholder="tell us about yourself" />
+        <TextAreaControl
+          label="bio"
+          placeholder="tell us about yourself"
+        />
 
-        <button>Submit</button>
+        <FormButton>Submit</FormButton>
       </form>
     </section>
   );

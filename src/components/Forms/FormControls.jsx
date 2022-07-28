@@ -1,4 +1,5 @@
 import styles from './FormControls.css';
+// import classNames from 'classnames';
 
 function FormControl({ label, children }) {
   return (
@@ -33,7 +34,11 @@ export function InputControl({ label, ...rest }) {
   );
 }
 
-export function SelectControl({ label, children, ...rest }) {
+export function SelectControl({
+  label,
+  children,
+  ...rest
+}) {
   return (
     <FormControl label={label}>
       <select {...rest}>{children}</select>
@@ -46,5 +51,13 @@ export function TextAreaControl({ label, ...rest }) {
     <FormControl label={label}>
       <textarea {...rest}></textarea>
     </FormControl>
+  );
+}
+
+export function FormButton({ children }) {
+  return (
+    <button className={styles.FormButton}>
+      {children}
+    </button>
   );
 }
