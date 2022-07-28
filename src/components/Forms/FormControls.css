@@ -52,3 +52,11 @@
     border: 1px solid var(--header-color);
     cursor: pointer;
   }
+
+.Fieldset {
+    border-top: 1px solid black;
+  
+    legend {
+      text-align: center;
+    }
+  }

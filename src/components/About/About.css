@@ -6,4 +6,10 @@
       padding: 30px 40px;
       width: 400px;
     }
-  }
+
+    .PasswordControl {
+      input {
+      background: var(--header-color);
+      }
+    }
+}

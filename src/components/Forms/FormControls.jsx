@@ -1,9 +1,18 @@
 import styles from './FormControls.css';
 // import classNames from 'classnames';
 
-function FormControl({ label, children }) {
+function FormControl({
+  label,
+  children,
+  className: customClassName,
+}) {
+  const className = classNames(
+    styles.FormControl,
+    customClassName
+  );
+      
   return (
-    <label className={styles.FormControl}>
+    <label className={className}>
       <Label text={label} />
       {children}
     </label>
@@ -26,10 +35,13 @@ export function CheckboxControl({ label, text, ...rest }) {
   );
 }
 
-export function InputControl({ label, ...rest }) {
+export function InputControl({
+  label,
+  className,
+  ...rest
+}) {
   return (
-    <FormControl label={label}>
-      <input {...rest} />
+    <FormControl label={label} className={className}>      <input {...rest} />
     </FormControl>
   );
 }
@@ -59,5 +71,14 @@ export function FormButton({ children }) {
     <button className={styles.FormButton}>
       {children}
     </button>
+  );
+}
+
+export function Fieldset({ legend, children }) {
+  return (
+    <fieldset className={styles.Fieldset}>
+      <legend>{legend}</legend>
+      {children}
+    </fieldset>
   );
 }

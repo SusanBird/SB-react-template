@@ -4,6 +4,7 @@ import {
   TextAreaControl,
   CheckboxControl,
   FormButton,
+  Fieldset,
 } from '../Forms/FormControls.jsx';
 
 import styles from './About.css';
@@ -13,21 +14,24 @@ export default function About() {
     <section className={styles.About}>
       Some text here...
       <form>
-        <InputControl
-          label="email"
-          name="email"
-          placeholder="enter your email"
-          type="email"
-          required
-        />
+        <Fieldset legend="Credentials">
+          <InputControl
+            label="email"
+            name="email"
+            placeholder="enter your email"
+            type="email"
+            required
+          />
 
-        <InputControl
-          label="password"
-          name="password"
-          placeholder="choose a password"
-          type="password"
-          required
-        />
+          <InputControl
+            className={styles.PasswordControl}
+            label="password"
+            name="password"
+            placeholder="choose a password"
+            type="password"
+            required
+          />
+        </Fieldset>
 
         <SelectControl label="type">
           <option>A</option>
