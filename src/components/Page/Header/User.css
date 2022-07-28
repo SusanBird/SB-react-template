@@ -4,12 +4,17 @@
     display: flex;
     align-items: center;
     gap: 5px;
+
+    button {
+      color: var(--white-color);
+      background: transparent;
+    }
   
     .UserMenu {
       position: absolute;
       top: 100%;
-      right: 0;
-      background: lightsteelblue;
+      right: calc(var(--padding) * -1);
+      background: var(--offset-color);
       display: grid;
       width: max-content;
       padding: var(--padding);

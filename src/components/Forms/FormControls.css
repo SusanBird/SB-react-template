@@ -1,19 +1,16 @@
 .FormControl {
     display: block;
   
-    &:not(:first-child) {
-      margin-top: 20px;
-    }
-  
-    &:not(:last-child) {
-      margin-bottom: 20px;
-    }
-  
-    span {
+    .Label {
       display: block;
-      font-size: 0.8em;
-      margin-bottom: 1px;
+      margin-bottom: 7px;
       color: var(--caption-color);
+    }
+  
+    .Options {
+      display: grid;
+      row-gap: 4px;
+      column-gap: 10px;
     }
   
     input:not([type='checkbox']),
@@ -34,7 +31,8 @@
       margin-top: 4px;
     }
   
-    input[type='checkbox'] {
+    input[type='checkbox'],
+    input[type='radio'] {
       width: 18px;
       height: 18px;
       margin: 0;
@@ -47,7 +45,8 @@
   }
 
 .FormButton {
-    padding: 10px 15px;
+    padding: 5px 10px;
+    height: 40px;
     background: var(--color-2);
     border: 1px solid var(--header-color);
     cursor: pointer;
