@@ -1,4 +1,4 @@
 .Home {
-    padding: 20px;
-    background: #bee3db;
+  padding: var(--padding);
+  background: #bee3db;
   }

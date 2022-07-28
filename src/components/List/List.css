@@ -1,6 +1,6 @@
 .List {
-    padding: 20px;
-    
+  padding: var(--padding);
+      
     li {
       padding: 5px;
       border-style: solid;
