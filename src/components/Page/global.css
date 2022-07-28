@@ -4,6 +4,29 @@
 
   
   :root {
-    background: #bee3db;
+    --primary-font: 'Source Sans Pro', Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", sans-serif;
+  --label-font: 'Source Sans Pro', Impact, Haettenschweiler, 'Franklin Gothic Bold',
+    Charcoal, 'Helvetica Inserat', 'Bitstream Vera Sans Bold', 'Arial Black',
+    sans-serif;
+
+  --header-color: #555b6e;
+  --color-2: #89b0ae;
+  --color-3: #ffd6ba;
+  --color-4: #e29578;
+  --background-color: #bee3db;
+  --black-color: rgb(27, 42, 48);
+  --white-color: white;
+}
+
+body {
+  font-family: var(--primary-font);
+  background: var(--background-color);
+  color: var(--black-color);
+}
+
+:global(.accent-theme) {
+  color: var(--color-4);
+  border-color: var(--color-2);
+  border-width: 1px;
   }
   
