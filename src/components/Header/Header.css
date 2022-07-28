@@ -1,9 +1,10 @@
 .Header {
     position: sticky;
     top: 0;
-    background: #555B6E;
-    color: #faf9f9;
+    background: var(--header-color);
+    color: var(--white-color);
     padding-right: 20px;
+    z-index: 1000;
   
     display: grid;
     grid-template-columns: auto 1fr auto;

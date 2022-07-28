@@ -20,6 +20,7 @@ export default function Menu() {
 
     const clickHandler = () => setIsOpen(false);
     document.addEventListener('click', clickHandler);
+    
     const keyHandler = (e) => {
       if (e.key !== 'Escape') return;
       clickHandler();
