@@ -1,0 +1,47 @@
+.FormControl {
+    display: block;
+  
+    &:not(:first-child) {
+      margin-top: 20px;
+    }
+  
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  
+    span {
+      display: block;
+      font-size: 0.8em;
+      margin-bottom: 1px;
+      color: var(--caption-color);
+    }
+  
+    input:not([type='checkbox']),
+    select,
+    textarea {
+      display: block;
+      width: 100%;
+      height: 40px;
+      padding: 5px;
+      font-size: 1em;
+      font-family: var(--primary-font);
+    }
+  
+    .CheckboxLabel {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 4px;
+    }
+  
+    input[type='checkbox'] {
+      width: 18px;
+      height: 18px;
+      margin: 0;
+    }
+  
+    textarea {
+      height: 6em;
+      resize: vertical;
+    }
+  }
