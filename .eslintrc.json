@@ -15,7 +15,8 @@
   },
   "parser": "@babel/eslint-parser",
   "globals": {
-    "process": true
+    "process": false,
+    "React": false
   },
   "env": {
     "es6": true,
@@ -23,8 +24,11 @@
     "jest": true
   },
   "plugins": ["babel", "react"],
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
-  "rules": {
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+    "rules": {
     "no-console": "warn",
     "indent": [
       "error",
