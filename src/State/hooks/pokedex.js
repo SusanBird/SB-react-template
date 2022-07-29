@@ -59,8 +59,8 @@ export function usePokedex(searchParams) {
   }, [searchParams.toString(), page]);
 
   const addPage = () => {
-    setPage((page) => page + 1);
+    setPage((page) => (page * perPage > count ? page : page + 1));
   };
-  
+
   return { pokedex, error, addPage };
 }
