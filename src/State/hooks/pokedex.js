@@ -8,10 +8,7 @@ export function usePokedex(searchParams) {
 
   useEffect(() => {
     const fetch = async () => {
-      const { data = {}, error } = await getPokedex(
-
-        searchParams
-      );
+      const { data = {}, error } = await getPokedex(searchParams);
 
       if (data) {
         const { results, count } = data;

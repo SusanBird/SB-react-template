@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import {
-  InputControl,
-  FormButton,
-} from '../Forms/FormControls.jsx';
+import { InputControl, FormButton } from '../Forms/FormControls.jsx';
 import styles from './Search.css';
 
 export default function Search() {
