@@ -1,26 +1,30 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { InputControl, FormButton } from '../Forms/FormControls.jsx';
+import { useSearch } from '../../state/hooks/url.js';
+import { useTypes } from '../../state/hooks/pokedex.js';
+import {
+  InputControl,
+  SelectControl,
+  FormButton,
+} from '../Forms/FormControls.jsx';
 import styles from './Search.css';
 
 export default function Search() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const pokemon = searchParams.get('pokemon') || '';
-  const type = searchParams.get('type') || '';
-
-  const [search, setSearch] = useState({ pokemon, type });
+  const { types } = useTypes();
+  const { params, setParams } = useSearch();
+  const [formData, setFormData] = useState({});
+  const { pokemon, type } = params;
 
   useEffect(() => {
-    setSearch({ pokemon, type });
+    setFormData({ pokemon, type });
   }, [pokemon, type]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchParams(search);
+    setParams(formData);
   };
 
   const handleChange = ({ target: { name, value } }) => {
-    setSearch((search) => ({ ...search, [name]: value }));
+    setFormData((formData) => ({ ...formData, [name]: value }));
   };
 
   return (
@@ -28,16 +32,27 @@ export default function Search() {
       <InputControl
         label="pokemon"
         name="pokemon"
-        value={search.pokemon}
+        value={formData.pokemon}
         onChange={handleChange}
       />
-      <InputControl
+
+      <SelectControl
         label="type"
         name="type"
-        value={search.type}
+        value={formData.type}
         onChange={handleChange}
-      />
+      >
+        <option value={''}>all types</option>
+        {types.map(({ type, count }) => (
+          <TypeOption key={type} type={type} count={count} />
+        ))}
+      </SelectControl>
+      
       <FormButton>🔍</FormButton>
     </form>
   );
+}
+
+function TypeOption({ type, count }) {
+  return <option value={type}>{`${type} (${count})`}</option>;
 }
