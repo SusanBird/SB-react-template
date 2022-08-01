@@ -10,9 +10,9 @@ import styles from './Search.css';
 
 export default function Search() {
   const { types } = useTypes();
-  const { params, setParams } = useSearch();
+  const [search, setSearch] = useSearch();
   const [formData, setFormData] = useState({});
-  const { pokemon, type } = params;
+  const { pokemon, type } = search;
 
   useEffect(() => {
     setFormData({ pokemon, type });
@@ -20,7 +20,7 @@ export default function Search() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setParams(formData);
+    setSearch(formData);
   };
 
   const handleChange = ({ target: { name, value } }) => {

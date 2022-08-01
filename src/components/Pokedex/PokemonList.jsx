@@ -1,14 +1,18 @@
-import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import styles from './PokemonList.css';
+import { useSearch } from '../../state/hooks/url.js';
+import { usePokedex } from '../../state/hooks/pokedex.js';
 
-export default function PokemonList({ pokedex, onLoadNext }) {
-  const { ref, inView } = useInView();
+export default function PokemonList() {
+  const [searchParams] = useSearch();
+  const { pokedex, addPage } = usePokedex(searchParams);
 
-  useEffect(() => {
-    if (!inView) return;
-    onLoadNext();
-  }, [inView]);
+  const { ref } = useInView({
+    triggerOnce: true,
+    onChange: (inView) => {
+      if (inView) addPage();
+    },
+  });
 
   return (
     <ul className={styles.PokemonList}>
