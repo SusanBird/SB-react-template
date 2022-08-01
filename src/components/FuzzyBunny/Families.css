@@ -1,0 +1,85 @@
+.Families {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+    margin-bottom: 20px;
+  
+    .Family {
+      padding: 12px;
+      border: 1px solid var(--color-4);
+      background: var(--offset-color);
+      min-height: 100px;
+      display: grid;
+      grid-template-rows: auto 1fr 40px;
+      gap: 10px;
+  
+      h2 {
+        margin: 0;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        color: var(--caption-color);
+        font-size: 1em;
+      }
+  
+      button {
+        border: 0;
+        padding: 0;
+        background: 0;
+        font-size: 0.8em;
+        cursor: pointer;
+        opacity: 0.5;
+  
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  
+  .Bunnies {
+    align-self: start;
+  
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  
+    li {
+      padding: 4px 5px;
+      border: 1px dashed var(--color-4);
+      background: var(--white-color);
+      display: flex;
+      gap: 10px;
+  
+      &:hover {
+        border: 1px solid var(--color-4);
+      }
+  
+      h3 {
+        margin: 0;
+        font-size: 0.9em;
+      }
+    }
+  }
+  
+  .AddBunny {
+    align-self: end;
+    display: grid;
+    grid-template-columns: 1fr auto;
+  
+    input {
+      border: 1px solid pink;
+      color: rgb(255, 131, 152);
+      padding: 0 5px;
+      height: 30px;
+  
+      &::placeholder {
+        color: pink;
+      }
+    }
+  
+    button {
+      justify-self: end;
+      font-size: 1.2em;
+    }
+  }

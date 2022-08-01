@@ -19,6 +19,7 @@
   --white-color: #faf9f9;
 
   --padding: 20px;
+  --padding-half: calc(var(--padding) / 2);
   @media (min-width: 700px) {
     --padding: 40px;
   }

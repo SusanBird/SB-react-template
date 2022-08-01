@@ -1,0 +1,12 @@
+.FuzzyBunny {
+    padding: var(--padding);
+    padding-top: var(--padding-half);
+  
+    display: grid;
+    gap: var(--padding-half);
+  
+    header {
+      background: var(--color-2);
+      padding: 5px 0;
+    }
+  }

@@ -1,6 +1,5 @@
 {
     "cSpell.words": [
-        "pokedex",
         "body",
         "charset",
         "client",
@@ -23,11 +22,13 @@
         "http",
         "import",
         "initial",
+        "Ivanova",
         "lang",
         "link",
         "meta",
         "Mode",
         "name",
+        "pokedex",
         "preconnect",
         "React",
         "render",
@@ -40,6 +41,7 @@
         "Template",
         "title",
         "viewport",
-        "width"
+        "width",
+        "yotz"
     ]
 }
