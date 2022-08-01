@@ -14,3 +14,12 @@ export async function getFamiliesWithBunnies() {
 
   return response;
 }
+
+export async function addFamily(family) {
+  const response = await client
+    .from('loving_families')
+    .insert(family)
+    .single();
+
+  return response;
+}

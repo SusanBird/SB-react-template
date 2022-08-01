@@ -2,6 +2,7 @@ import { useEffect, useContext, useState } from 'react';
 import { FuzzyBunnyContext } from '../context/FuzzyBunnyContext.jsx';
 import {
   getFamiliesWithBunnies,
+  addFamily,
 } from '../services/fuzzy-bunny-service.js';
 
 export function useFamilies() {
@@ -30,4 +31,17 @@ export function useFamilies() {
   }, []);
   
   return { families, error };
+}
+
+export function useActions() {
+  const { dispatch } = useContext(FuzzyBunnyContext);
+
+  const add = async (family) => {
+    const { data } = await addFamily(family);
+    if (data) {
+      dispatch({ type: 'add', payload: data });
+    }
+  };
+
+  return { add };
 }
