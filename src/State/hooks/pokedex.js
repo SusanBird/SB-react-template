@@ -18,16 +18,20 @@ export function useTypes() {
   return { types, error };
 }
 
-export function usePokedex(searchParams) {
+export function usePokedex(searchParams, options) {
+  const searchQuery = searchParams.toString();
   const [error, setError] = useState(null);
-  const [pokedex, setPokedex] = useState(null);
+  const [pokedex, setPokedex] = useState([]);
+  const [query, setQuery] = useState(searchQuery);
   const [count, setCount] = useState(0);
   const [page, setPage] = useState(1);
-  const [perPage, setPerPage] = useState(20);
+  const [perPage, setPerPage] = useState(options?.perPage ?? 25);
 
   useEffect(() => {
+    setQuery(searchQuery);
     setPage(1);
-  }, [searchParams.toString()]);
+    setPokedex([]);
+  }, [searchQuery]);
 
   useEffect(() => {
     const fetch = async () => {
@@ -56,7 +60,7 @@ export function usePokedex(searchParams) {
     };
 
     fetch();
-  }, [searchParams.toString(), page]);
+  }, [query, page]);
 
   const addPage = () => {
     setPage((page) => (page * perPage > count ? page : page + 1));

@@ -1,17 +1,14 @@
 import { Children, cloneElement } from 'react';
-import styles from './FormControls.css';
 import classNames from 'classnames';
+import styles from './FormControls.css';
 
 function FormControl({
   label,
   children,
   className: customClassName,
 }) {
-  const className = classNames(
-    styles.FormControl,
-    customClassName
-  );
-      
+  const className = classNames(styles.FormControl, customClassName);
+
   return (
     <label className={className}>
       <LabelText text={label} />
@@ -81,12 +78,7 @@ export function OptionGroupControl({
   );
 }
 
-export function InputControl({
-  label,
-  className,
-  value,
-  ...rest
-}) {
+export function InputControl({ label, className, value, ...rest }) {
   return (
     <FormControl label={label} className={className}>
       <input value={value || ''} {...rest} />
@@ -94,12 +86,7 @@ export function InputControl({
   );
 }
 
-export function SelectControl({
-  label,
-  children,
-  value,
-  ...rest
-}) {
+export function SelectControl({ label, children, value, ...rest }) {
   return (
     <FormControl label={label}>
       <select value={value || ''} {...rest}>
@@ -117,7 +104,7 @@ export function TextAreaControl({ label, ...rest }) {
   );
 }
 
-export function FormButton({ 
+export function FormButton({
   children,
   className: customClassName,
   ...rest

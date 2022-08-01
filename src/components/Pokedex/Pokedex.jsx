@@ -6,15 +6,14 @@ import styles from './Pokedex.css';
 
 export default function Pokedex() {
   const [searchParams] = useSearchParams();
-
-  const { pokedex } = usePokedex(searchParams);
+  const { pokedex, addPage } = usePokedex(searchParams);
 
   if (!pokedex) return null;
 
   return (
     <section className={styles.Pokedex}>
       <Search />
-      <PokemonList pokedex={pokedex} />;
+      <PokemonList pokedex={pokedex} onLoadNext={addPage} />
     </section>
   );
 }
