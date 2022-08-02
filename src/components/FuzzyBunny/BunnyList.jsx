@@ -1,6 +1,6 @@
 import styles from './BunnyList.css';
 
-export function BunnyList() {
+export default function BunnyList() {
   return (
     <>
       <ul className={styles.BunnyList}>
