@@ -40,38 +40,37 @@ export function useActions() {
   const { dispatch } = useContext(FuzzyBunnyContext);
 
 
-  const add = async (family) => {
-    const { data, error } = await addFamily(family);
-    if (error) {
-      showError(error.message);
-    }
-    if (data) {
-      dispatch({ type: 'add', payload: data });
-      showSuccess(`Added ${data.name}`);
-    }
-  };
+  const createAction =
+    (service, type, makeSuccessMessage) =>
+      async (...args) => {
+        const { data, error } = await service(...args);
 
-  const remove = async (id) => {
-    const { data, error } = await removeFamily(id);
-    if (error) {
-      showError(error.message);
-    }
-    if (data) {
-      dispatch({ type: 'remove', payload: data });
-      showSuccess(`Removed ${data.name}`);
-    }
-  };
+        if (error) showError(error.message);
 
-  const update = async (family) => {
-    const { data, error } = await updateFamily(family);
-    if (error) {
-      showError(error.message);
-    }
-    if (data) {
-      dispatch({ type: 'update', payload: data });
-      showSuccess(`Updated ${data.name}`);
-    }
-  };
+        if (data) {
+          dispatch({ type, payload: data });
+          const successMessage = makeSuccessMessage(data);
+          showSuccess(successMessage);
+        }
+      };
+
+  const add = createAction(
+    addFamily,
+    'add',
+    (data) => `Added ${data.name}`
+  );
+
+  const remove = createAction(
+    removeFamily,
+    'remove',
+    (data) => `Removed ${data.name}`
+  );
+
+  const update = createAction(
+    updateFamily,
+    'update',
+    (data) => `Updated ${data.name}`
+  );
 
   return { add, remove, update };
 }
