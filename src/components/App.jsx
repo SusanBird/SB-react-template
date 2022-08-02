@@ -4,6 +4,7 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import Layout from './Page/Layout.jsx';
 import Home from './Home/Home.jsx';
 import Pokedex from './Pokedex/Pokedex.jsx';
@@ -16,6 +17,7 @@ import FuzzyBunnyProvider from '../state/context/FuzzyBunnyContext.jsx';
 export default function App() {
   return (
     <Router>
+      <Toaster />
       <FuzzyBunnyProvider> 
         <Routes>
           <Route path="/" element={<Layout />}>

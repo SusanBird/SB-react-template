@@ -6,6 +6,7 @@ import {
   removeFamily,
   updateFamily,
 } from '../services/fuzzy-bunny-service.js';
+import { showSuccess, showError } from '../services/toaster.js';
 
 export function useFamilies() {
   const [error, setError] = useState(null);
@@ -38,24 +39,37 @@ export function useFamilies() {
 export function useActions() {
   const { dispatch } = useContext(FuzzyBunnyContext);
 
+
   const add = async (family) => {
-    const { data } = await addFamily(family);
+    const { data, error } = await addFamily(family);
+    if (error) {
+      showError(error.message);
+    }
     if (data) {
       dispatch({ type: 'add', payload: data });
+      showSuccess(`Added ${data.name}`);
     }
   };
 
   const remove = async (id) => {
-    const { data } = await removeFamily(id);
+    const { data, error } = await removeFamily(id);
+    if (error) {
+      showError(error.message);
+    }
     if (data) {
       dispatch({ type: 'remove', payload: data });
+      showSuccess(`Removed ${data.name}`);
     }
   };
 
   const update = async (family) => {
-    const { data } = await updateFamily(family);
+    const { data, error } = await updateFamily(family);
+    if (error) {
+      showError(error.message);
+    }
     if (data) {
       dispatch({ type: 'update', payload: data });
+      showSuccess(`Updated ${data.name}`);
     }
   };
 
