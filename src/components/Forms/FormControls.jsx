@@ -1,4 +1,4 @@
-import { Children, cloneElement } from 'react';
+import { Children, cloneElement, forwardRef } from 'react';
 import classNames from 'classnames';
 import styles from './FormControls.css';
 
@@ -78,13 +78,17 @@ export function OptionGroupControl({
   );
 }
 
-export function InputControl({ label, className, value, ...rest }) {
-  return (
-    <FormControl label={label} className={className}>
-      <input value={value || ''} {...rest} />
-    </FormControl>
-  );
-}
+export const InputControl = forwardRef(
+  ({ label, className, value, ...rest }, ref) => {
+    return (
+      <FormControl label={label} className={className}>
+        <input ref={ref} value={value || ''} {...rest} />
+      </FormControl>
+    );
+  }
+);
+
+InputControl.displayName = 'InputControl';
 
 export function SelectControl({ label, children, value, ...rest }) {
   return (

@@ -28,7 +28,7 @@ export function usePokedex(search, options) {
   const [pokedex, setPokedex] = useState([]);
   const [count, setCount] = useState(0);
   const [page, setPage] = useState(1);
-  const perPage = options?.perPage ?? 5;
+  const perPage = options?.perPage ?? 20;
 
   useEffect(() => {
     setPage(1);

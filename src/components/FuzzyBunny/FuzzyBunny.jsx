@@ -13,7 +13,7 @@ export default function FuzzyBunny() {
       <header>
         <Navigation navigation={navigation} />
       </header>
-      <Outlet>Default content</Outlet>
+      <Outlet />
     </section>
   );
 }
