@@ -3,6 +3,7 @@ import { FuzzyBunnyContext } from '../context/FuzzyBunnyContext.jsx';
 import {
   getFamiliesWithBunnies,
   addFamily,
+//   removeFamily,
 } from '../services/fuzzy-bunny-service.js';
 
 export function useFamilies() {
@@ -42,6 +43,17 @@ export function useActions() {
       dispatch({ type: 'add', payload: data });
     }
   };
+
+//   const remove = async (id) => {
+//     const { data, error } = await removeFamily(id);
+//     if (error) {
+//       showError(error.message);
+//     }
+//     if (data) {
+//       dispatch({ type: 'remove', payload: data });
+//       showSuccess(`Removed ${data.name}`);
+//     }
+//   };
 
   return { add };
 }
