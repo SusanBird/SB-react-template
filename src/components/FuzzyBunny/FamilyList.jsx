@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import {
   useFamilies,
-  useActions
+  useFamilyActions,
 } from '../../state/hooks/fuzzyBunny.js';
 import styles from './FamilyList.css';
 import { InputControl } from '../Forms/FormControls.jsx';
@@ -21,7 +21,7 @@ export default function FamilyList() {
 }
 
 function Family({ family }) {
-  const { remove, update } = useActions();
+  const { remove, update } = useFamilyActions();
   const [editing, setEditing] = useState(false);
   const ref = useRef();
   const [name, setName] = useState(family.name);
