@@ -33,3 +33,13 @@ export async function removeFamily(id) {
 
   return response;
 }
+
+export async function updateFamily(family) {
+  const response = await client
+    .from('loving_families')
+    .update(family)
+    .eq('id', family.id)
+    .single();
+
+  return response;
+}

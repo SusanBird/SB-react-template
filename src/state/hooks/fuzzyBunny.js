@@ -4,6 +4,7 @@ import {
   getFamiliesWithBunnies,
   addFamily,
   removeFamily,
+  updateFamily,
 } from '../services/fuzzy-bunny-service.js';
 
 export function useFamilies() {
@@ -51,5 +52,13 @@ export function useActions() {
     }
   };
 
-  return { add, remove };
+  const update = async (family) => {
+    const { data } = await updateFamily(family);
+    if (data) {
+      dispatch({ type: 'update', payload: data });
+    }
+  };
+
+  return { add, remove, update };
 }
+
