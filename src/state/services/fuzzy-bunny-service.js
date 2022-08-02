@@ -11,7 +11,7 @@ export async function getFamiliesWithBunnies() {
         name
     )
   `);
-console.log(response);
+
   return response;
 }
 
@@ -24,12 +24,12 @@ export async function addFamily(family) {
   return response;
 }
 
-// export async function removeFamily(id) {
-//   const response = await client
-//     .from('loving_families')
-//     .delete()
-//     .eq('id', id)
-//     .single();
+export async function removeFamily(id) {
+  const response = await client
+    .from('loving_families')
+    .delete()
+    .eq('id', id)
+    .single();
 
-//   return response;
-// }
+  return response;
+}
