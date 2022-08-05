@@ -1,9 +1,5 @@
 .Header {
-  --header-height: 35px;
-  @media (min-width: 700px) {
-    --header-height: 50px;
-  }
-
+  z-index: 1000;
   position: sticky;
   top: 0;
   padding-right: var(--padding);

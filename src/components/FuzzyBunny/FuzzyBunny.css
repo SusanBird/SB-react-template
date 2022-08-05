@@ -6,6 +6,9 @@
     gap: var(--padding-half);
   
     > header {
+      position: sticky;
+      top: var(--header-height);
+      z-index: 500;
       background: var(--subheader-color);
       padding: 5px 0;
     }

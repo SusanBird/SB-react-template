@@ -28,6 +28,11 @@
   }
 }
 
+--header-height: 35px;
+@media (min-width: 700px) {
+  --header-height: 50px;
+}
+
 body {
   font-family: var(--primary-font);
   background: var(--background-color);
