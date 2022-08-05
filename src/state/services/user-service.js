@@ -42,14 +42,14 @@ export async function getProfile() {
     .single();
 }
 
-export async function updateProfile(profile) {
+export async function upsertProfile(profile) {
   const response = await client
     .from('profiles')
     .upsert(profile)
     .eq('id', profile.id)
     .single();
 
-  saveLocalProfile(response.data);
+  // saveLocalProfile(response.data);
   return response;
 }
 

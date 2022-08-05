@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import {
   signIn as signInService,
   signUp as signUpService,
+  uploadAvatar,
+  upsertProfile,
 } from '../services/user-service.js';
 import { showError } from '../services/toaster.js';
 import {
@@ -36,4 +38,31 @@ export function useAuth() {
     signIn,
     signUp,
   };
+}
+
+export function useProfile() {
+  const { user, profile } = useContext(UserStateContext);
+  const { setProfile } = useContext(UserActionContext);
+  
+  const updateProfile = async ({ avatar, ...profile }) => {
+    const { url, error } = await uploadAvatar(user.id, avatar);
+    if (error) {
+      showError(error.message);
+    }
+    if (url) {
+      const { data, error } = await upsertProfile({
+        ...profile,
+        avatar: url,
+      });
+    
+      if (error) {
+        showError(error.message);
+      }
+      if (data) {
+        setProfile(data);
+      }
+    }
+  };
+  
+  return [profile, updateProfile];
 }

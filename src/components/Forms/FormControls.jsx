@@ -74,11 +74,12 @@ const verifyValue = (props) => {
     props.value = props.value ?? '';
 };
 export const InputControl = forwardRef((props, ref) => {
-  const { label, className, ...rest } = props;
+  const { label, className, children, ...rest } = props;
   verifyValue(rest);
   return (
     <FormControl label={label} className={className}>
       <input ref={ref} {...rest} />
+      {children}
     </FormControl>
   );
 });

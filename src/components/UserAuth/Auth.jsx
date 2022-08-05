@@ -36,17 +36,17 @@ export default function Auth() {
 }
 
 function AuthForm({ header, button, prompt, link, onSubmit }) {
-    const [credentials, handleChange] = useForm();
+  const [credentials, handleChange] = useForm();
   
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      onSubmit(credentials);
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(credentials);
+  };
     
-return (
+  return (
     <section className={styles.Auth}>
       <form onSubmit={handleSubmit}>
-                <h1>{header}</h1>
+        <h1>{header}</h1>
 
         <InputControl
           label="Email"
