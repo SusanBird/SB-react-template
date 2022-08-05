@@ -13,14 +13,6 @@ export async function getFamiliesWithBunnies() {
   `);
 }
 
-export async function getBunnies() {
-  return [
-    { id: 1, name: 'trogdor', familyId: 1 },
-    { id: 2, name: 'strongbad', familyId: 1 },
-    { id: 1, name: 'peasant', familyId: 1 },
-  ];
-}
-
 export async function addFamily(family) {
   return await client
     .from('loving_families')
