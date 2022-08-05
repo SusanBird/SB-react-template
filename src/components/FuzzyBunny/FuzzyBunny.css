@@ -5,8 +5,8 @@
     display: grid;
     gap: var(--padding-half);
   
-    header {
-      background: var(--color-2);
+    > header {
+      background: var(--subheader-color);
       padding: 5px 0;
     }
   }

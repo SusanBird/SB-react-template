@@ -10,9 +10,12 @@
     sans-serif;
 
   --header-color: #555b6e;
-  --color-2: #89b0ae;
+  --button-color: #89dfe7;
+  --subheader-color: #40c0cb;
   --offset-color: #ffd6ba;
   --color-4: #e29578;
+  --tag-color: #e4fdff;
+  --light-accent-color: #e5f1bf;
   --background-color: #bee3db;
   --black-color: rgb(27, 42, 48);
   --caption-color: rgb(65, 99, 112);
