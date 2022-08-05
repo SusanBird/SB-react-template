@@ -16,6 +16,21 @@ export async function signOut() {
   return await client.auth.signOut();
 }
 
+const PROFILE = 'profile';
+export async function getLocalProfile() {
+  const json = localStorage.getItem(PROFILE);
+  if (!json) return null;
+  try {
+    return JSON.parse(json);
+  } catch (err) {
+    localStorage.removeItem(PROFILE);
+  }
+}
+
+export async function saveLocalProfile(profile) {
+  localStorage.setItem(PROFILE, JSON.stringify(profile));
+}
+
 export async function getProfile() {
   const user = getUser();
 
@@ -27,11 +42,14 @@ export async function getProfile() {
 }
 
 export async function updateProfile(profile) {
-  return await client
+  const response = await client
     .from('profiles')
     .upsert(profile)
     .eq('id', profile.id)
     .single();
+
+  saveLocalProfile(response.data);
+  return response;
 }
 
 const BUCKET_NAME = 'avatars';

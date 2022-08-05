@@ -1,7 +1,7 @@
 import { useContext, useEffect, useMemo, useState } from 'react';
 import {
   FuzzyBunnyStateContext,
-  FuzzyBunnyDispatchContext,
+  FuzzyBunnyActionContext,
 } from '../context/FuzzyBunnyContext.jsx';
 import {
   getFamiliesWithBunnies,
@@ -27,7 +27,7 @@ export function useSimpleFamilies() {
 export function useFamilies() {
   const [error, setError] = useState(null);
   const { families } = useContext(FuzzyBunnyStateContext);
-  const { familiesDispatch } = useContext(FuzzyBunnyDispatchContext);
+  const { familiesDispatch } = useContext(FuzzyBunnyActionContext);
 
   useEffect(() => {
     if (families) return;
@@ -71,8 +71,8 @@ function createDispatchActions(dispatch) {
 }
 
 export function useFamilyActions() {
-  const { familiesDispatch } = useContext(FuzzyBunnyDispatchContext);
-
+  const { familiesDispatch } = useContext(FuzzyBunnyActionContext);
+  
   const createAction = createDispatchActions(familiesDispatch);
 
   const add = createAction({

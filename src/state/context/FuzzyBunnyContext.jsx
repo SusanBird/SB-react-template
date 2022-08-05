@@ -1,7 +1,7 @@
 import { createContext, useMemo, useReducer } from 'react';
 
 export const FuzzyBunnyStateContext = createContext();
-export const FuzzyBunnyDispatchContext = createContext();
+export const FuzzyBunnyActionContext = createContext();
 
 function reducer(list, { type, payload }) {
   switch (type) {
@@ -34,9 +34,9 @@ export default function FuzzyBunnyProvider({ children }) {
 
   return (
     <FuzzyBunnyStateContext.Provider value={stateValue}>
-      <FuzzyBunnyDispatchContext.Provider value={dispatchValue}>
+      <FuzzyBunnyActionContext.Provider value={dispatchValue}>
         {children}
-      </FuzzyBunnyDispatchContext.Provider>
+      </FuzzyBunnyActionContext.Provider>
     </FuzzyBunnyStateContext.Provider>
   );
 }
