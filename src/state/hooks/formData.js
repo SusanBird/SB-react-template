@@ -15,6 +15,5 @@ export function useForm() {
 
 function getValue({ value, type, checked }) {
   if (type === 'checkbox') return checked;
-  // if (!isNaN(value)) return +value;
   return value;
 }
