@@ -23,7 +23,7 @@ export default function AddFamily() {
         onChange={handleChange}
       />
 
-      <FormButton>🔍</FormButton>
+      <FormButton icon={true}> + </FormButton>
     </form>
   );
 }

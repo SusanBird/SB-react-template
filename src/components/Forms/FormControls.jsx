@@ -127,11 +127,14 @@ TextAreaControl.displayName = 'TextAreaControl';
 
 export function FormButton({
   children,
+  icon = false,
   className: customClassName,
   ...rest
 }) {
-  const className = classNames(styles.FormButton, customClassName);
-
+  const className = classNames(styles.FormButton, customClassName, {
+    [styles.Icon]: icon,
+  });
+  
   return (
     <button className={className} {...rest}>
       {children}
