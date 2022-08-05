@@ -3,36 +3,50 @@ import {
   InputControl,
   FormButton,
 } from '../../components/Forms/FormControls.jsx';
+import { useForm } from '../../state/hooks/formData.js';
+import { useAuth } from '../../state/hooks/userAuth.js';
 import styles from './Auth.css';
 
-const signUp = {
-  header: 'Create a new account',
-  button: 'Sign Up',
-  prompt: 'Already have an account?',
-  link: '../',
-};
-
-const signIn = {
-  header: 'Sign in to your account',
-  button: 'Sign In',
-  prompt: 'Need to create an account?',
-  link: 'sign-up',
-};
-
 export default function Auth() {
+  const { signIn, signUp } = useAuth();
+
+  const signUpInfo = {
+    header: 'Create a new account',
+    button: 'Sign Up',
+    prompt: 'Already have an account?',
+    link: '../',
+    onSubmit: signUp,
+  };
+    
+  const signInInfo = {
+    header: 'Sign in to your account',
+    button: 'Sign In',
+    prompt: 'Need to create an account?',
+    link: 'sign-up',
+    onSubmit: signIn,
+  };
+
+
   return (
     <Routes>
-      <Route index element={<AuthForm {...signIn} />} />
-      <Route path="sign-up" element={<AuthForm {...signUp} />} />
+      <Route index element={<AuthForm {...signInInfo} />} />
+      <Route path="sign-up" element={<AuthForm {...signUpInfo} />} />
     </Routes>
   );
 }
 
-function AuthForm({ header, button, prompt, link }) {
-  return (
+function AuthForm({ header, button, prompt, link, onSubmit }) {
+    const [credentials, handleChange] = useForm();
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      onSubmit(credentials);
+    };
+    
+return (
     <section className={styles.Auth}>
-      <form>
-        <h1>{header}</h1>
+      <form onSubmit={handleSubmit}>
+                <h1>{header}</h1>
 
         <InputControl
           label="Email"
@@ -40,6 +54,8 @@ function AuthForm({ header, button, prompt, link }) {
           type="email"
           required
           placeholder="email"
+          value={credentials.email}
+          onChange={handleChange}
         />
         <InputControl
           label="Password"
@@ -47,6 +63,8 @@ function AuthForm({ header, button, prompt, link }) {
           type="password"
           required
           placeholder="password"
+          value={credentials.password}
+          onChange={handleChange}
         />
 
         <FormButton>{button}</FormButton>

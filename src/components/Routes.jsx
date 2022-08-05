@@ -11,7 +11,7 @@ import Bunnies from './FuzzyBunny/Bunnies.jsx';
 export default function Routes() {
   return (
     <RRoutes>
-      <Route path="auth/*" element={<UserAuth />} />
+      <Route path="user/*" element={<UserAuth />} />
       <Route element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="pokedex" element={<Pokedex />} />
@@ -20,7 +20,7 @@ export default function Routes() {
           <Route index element={<Families />} />
           <Route path="bunnies" element={<Bunnies />} />
         </Route>
-        <Route path="*" element={<Navigate to="/" replace />} />
+        {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
       </Route>
     </RRoutes>
   );

@@ -4,12 +4,12 @@ export function getUser() {
   return client.auth.user();
 }
 
-export async function signUp(email, password) {
-  return await client.auth.signUp({ email, password });
+export async function signUp(credentials) {
+  return await client.auth.signUp(credentials);
 }
 
-export async function signIn(email, password) {
-  return await client.auth.signIn({ email, password });
+export async function signIn(credentials) {
+  return await client.auth.signIn(credentials);
 }
 
 export async function signOut() {
@@ -17,7 +17,8 @@ export async function signOut() {
 }
 
 const PROFILE = 'profile';
-export async function getLocalProfile() {
+
+export function getLocalProfile() {
   const json = localStorage.getItem(PROFILE);
   if (!json) return null;
   try {
@@ -27,7 +28,7 @@ export async function getLocalProfile() {
   }
 }
 
-export async function saveLocalProfile(profile) {
+export function saveLocalProfile(profile) {
   localStorage.setItem(PROFILE, JSON.stringify(profile));
 }
 
