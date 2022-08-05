@@ -28,10 +28,10 @@ export async function removeFamily(id) {
     .single();
 }
 
-export async function updateFamily(family) {
+export async function updateFamily(id, familyUpdate) {  
   return await client
     .from('loving_families')
-    .update(family)
-    .eq('id', family.id)
+    .update(familyUpdate)
+    .eq('id', id)
     .single();
 }
