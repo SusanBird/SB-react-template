@@ -8,6 +8,7 @@ const primary = [
   { to: 'pokedex', label: 'Pokedex' },
   { to: 'fuzzy-bunny', label: 'Fuzzy Bunny' },
   { to: 'about', label: 'About' },
+  { to: 'wat', label: 'Wat' },
 ];
 
 export default function Header() {

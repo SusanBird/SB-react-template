@@ -8,8 +8,21 @@ import {
   addFamily,
   removeFamily,
   updateFamily,
-} from '../services/fuzzy-bunny-service.js';
+} from '../services/fuzzyBunnyService.js';
 import { showSuccess, showError } from '../services/toaster.js';
+
+export function useSimpleFamilies() {
+  const [response, setResponse] = useState(null);
+  useEffect(() => {
+    const fetch = async () => {
+      const response = await getFamiliesWithBunnies();
+      setResponse(response);
+    };
+    fetch();
+  }, []);
+
+  return response;
+}
 
 export function useFamilies() {
   const [error, setError] = useState(null);

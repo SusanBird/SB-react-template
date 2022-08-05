@@ -1,10 +1,10 @@
-import { useFamilies } from '../../state/hooks/fuzzyBunny.js';
+import { useSimpleFamilies } from '../../state/hooks/fuzzyBunny.js';
 import Family from './Family.jsx';
 import styles from './FamilyList.css';
 
 export default function FamilyList() {
-  const { families } = useFamilies();
-  
+  const families = useSimpleFamilies();
+    
   if (!families) return null;
   
   return (

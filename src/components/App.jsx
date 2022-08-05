@@ -10,6 +10,7 @@ import Layout from './Page/Layout.jsx';
 import Home from './Home/Home.jsx';
 import Pokedex from './Pokedex/Pokedex.jsx';
 import About from './About/About.jsx';
+import Wat from './Wat/Wat.jsx';
 import FuzzyBunny from './FuzzyBunny/FuzzyBunny.jsx';
 import Families from './FuzzyBunny/Families.jsx';
 import Bunnies from './FuzzyBunny/Bunnies.jsx';
@@ -26,6 +27,7 @@ export default function App() {
             <Route index element={<Home />} />
             <Route path="pokedex" element={<Pokedex />} />
             <Route path="about" element={<About />} />
+            <Route path="wat" element={<Wat />} />
             <Route path="fuzzy-bunny" element={<FuzzyBunny />}>
               <Route index element={<Families />} />
               <Route path="bunnies" element={<Bunnies />} />
