@@ -47,6 +47,7 @@ export function OptionGroupControl({
   onChange,
   size = '100px',
   children,
+  value,
 }) {
   return (
     <div className={styles.FormControl}>
@@ -61,10 +62,12 @@ export function OptionGroupControl({
           )`,
           }}
         >
-          {Children.map(children, (child) =>
-            cloneElement(child, { name, onChange })
-          )}
-        </div>
+          {Children.map(children, (child) => {
+            const checked = Array.isArray(value)
+              ? value.includes(child.props.value)
+              : value == child.props.value;
+            return cloneElement(child, { name, onChange, checked });
+          })}        </div>
       </fieldset>
     </div>
   );
