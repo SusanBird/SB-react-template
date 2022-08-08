@@ -1,34 +1,33 @@
 import { useState } from 'react';
 import { useProfile } from '../../state/hooks/userAuth.js';
-import { useForm } from '../../state/hooks/formData.js';
-import { FormButton, InputControl } from '../Forms/FormControls.jsx';
+import {
+  Form,
+  FormButton,
+  InputControl,
+} from '../Forms/FormControls.jsx';
+import Avatar from './Avatar.jsx';
 import styles from './Profile.css';
 
 export default function Profile() {
   const [, updateProfile] = useProfile();
-  const [profile, handleChange] = useForm();
   const [preview, setPreview] = useState();
+  const [updating, setUpdating] = useState(false);
 
   const handlePreview = (e) => {
     const target = e.target;
     const [file] = target.files;
     setPreview(URL.createObjectURL(file));
-    handleChange({
-      target: {
-        name: target.name,
-        value: file,
-      },
-    });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    updateProfile(profile);
+  const handleSubmit = async (profile) => {
+    setUpdating(true);
+    await updateProfile(profile);
+    setUpdating(false);
   };
 
   return (
     <section className={styles.Profile}>
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <h1>User Profile</h1>
 
         <InputControl
@@ -36,8 +35,6 @@ export default function Profile() {
           name="username"
           required
           placeholder="enter a user name"
-          value={profile.username}
-          onChange={handleChange}
         />
 
         <InputControl
@@ -48,11 +45,13 @@ export default function Profile() {
           required
           onChange={handlePreview}
         >
-          {preview && <img src={preview} alt="avatar preview" />}
+          <Avatar src={preview} username="avatar preview" />
         </InputControl>
 
-        <FormButton>Update</FormButton>
-      </form>
+        <FormButton disabled={updating}>
+          {updating ? 'Updating...' : 'Update'}
+        </FormButton>
+      </Form>
     </section>
   );
 }

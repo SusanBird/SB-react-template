@@ -24,18 +24,15 @@
     "jest": true
   },
   "plugins": ["babel", "react"],
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended"
-  ],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
     "rules": {
     "no-console": "warn",
     "indent": [
       "error",
       2,
       {
-        "SwitchCase": 1
-      }
+        "SwitchCase": 1,
+        "offsetTernaryExpressions": true      }
     ],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],

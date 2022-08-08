@@ -1,9 +1,9 @@
 import { Link, Route, Routes } from 'react-router-dom';
 import {
+  Form,
   InputControl,
   FormButton,
 } from '../../components/Forms/FormControls.jsx';
-import { useForm } from '../../state/hooks/formData.js';
 import { useAuth } from '../../state/hooks/userAuth.js';
 import styles from './Auth.css';
 
@@ -36,16 +36,10 @@ export default function Auth() {
 }
 
 function AuthForm({ header, button, prompt, link, onSubmit }) {
-  const [credentials, handleChange] = useForm();
   
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit(credentials);
-  };
-    
   return (
     <section className={styles.Auth}>
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={onSubmit}>
         <h1>{header}</h1>
 
         <InputControl
@@ -54,8 +48,6 @@ function AuthForm({ header, button, prompt, link, onSubmit }) {
           type="email"
           required
           placeholder="email"
-          value={credentials.email}
-          onChange={handleChange}
         />
         <InputControl
           label="Password"
@@ -63,14 +55,12 @@ function AuthForm({ header, button, prompt, link, onSubmit }) {
           type="password"
           required
           placeholder="password"
-          value={credentials.password}
-          onChange={handleChange}
         />
 
         <FormButton>{button}</FormButton>
 
         <Link to={link}>{prompt}</Link>
-      </form>
+      </Form>
     </section>
   );
 }

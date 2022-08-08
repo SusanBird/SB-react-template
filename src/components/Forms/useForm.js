@@ -1,7 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export function useForm(initialData) {
-  const [data, setData] = useState(initialData ?? {});
+  const formData = initialData ?? {};
+  const [data, setData] = useState(formData);
+
+  useEffect(() => {
+    if (formData === data) return;
+    setData(formData);
+  }, [initialData]);
 
   const handleChange = ({ target }) => {
     setData({

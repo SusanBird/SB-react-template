@@ -134,49 +134,42 @@ test('Custom class name on form', async () => {
   expect(form.className).toBe('test-class');
 });
 
-test('Checkbox Option Group handles multiple values', async () => {
+function OnChangeTest({ onInputChange, onSubmit }) {
+  return (
+    <Form onSubmit={onSubmit}>
+      <InputControl
+        label="input control"
+        name="inputControl"
+        onChange={onInputChange}
+      />
+
+      <FormButton />
+    </Form>
+  );
+}
+
+test('onChange handles still fire in addition to submit', async () => {
+  const user = userEvent.setup();
+  const handleSubmit = jest.fn();
+  let value = '';
+  const handleInputChange = ({ target }) => (value = target.value);
+
   render(
-    <OptionGroupControl
-      label="checkbox group control"
-      name="checkboxGroupControl"
-      onChange={() => {}}
-      value={['2', '4']}
-    >
-      <CheckboxOption value="1" text="monday" />
-      <CheckboxOption value="2" text="tuesday" />
-      <CheckboxOption value="3" text="wednesday" />
-      <CheckboxOption value="4" text="thursday" />
-      <CheckboxOption value="5" text="friday" />
-    </OptionGroupControl>
+    <OnChangeTest
+      onSubmit={handleSubmit}
+      onInputChange={handleInputChange}
+    />
   );
 
-  const checkboxOption1 = screen.getByLabelText('tuesday');
-  expect(checkboxOption1.checked).toBe(true);
+  const input = screen.getByLabelText('input control');
+  await user.type(input, 'new value');
+  expect(value).toBe('new value');
 
-  const checkboxOption2 = screen.getByLabelText('wednesday');
-  expect(checkboxOption2.checked).toBe(false);
+  await user.click(screen.getByRole('button'));
+  expect(submitted(handleSubmit)).toEqual({
+    inputControl: 'new value',
+  });
 
-  const checkboxOption3 = screen.getByLabelText('thursday');
-  expect(checkboxOption3.checked).toBe(true);
+  expect(value).toBe('new value');
 });
 
-test('Radio Option Group handles value', async () => {
-  render(
-    <OptionGroupControl
-      label="radio group control"
-      name="radioGroupControl"
-      onChange={() => {}}
-      value="2"
-    >
-      <RadioOption value="1" text="A" />
-      <RadioOption value="2" text="B" />
-      <RadioOption value="3" text="C" />
-    </OptionGroupControl>
-  );
-
-  const radioOption = screen.getByLabelText('B');
-  expect(radioOption.checked).toBe(true);
-
-  const radioOption2 = screen.getByLabelText('A');
-  expect(radioOption2.checked).toBe(false);
-});

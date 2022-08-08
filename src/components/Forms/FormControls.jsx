@@ -1,3 +1,4 @@
+export { default as Form } from './Form.jsx';
 import { Children, cloneElement, forwardRef } from 'react';
 import classNames from 'classnames';
 import styles from './FormControls.css';

@@ -1,5 +1,5 @@
 import { Children, cloneElement } from 'react';
-import { useForm } from './formData.js';
+import { useForm } from './useForm.js';
 
 export default function Form({
   data: initialData,
@@ -18,12 +18,21 @@ export default function Form({
         onSubmit(data);
       }}
     >
-      {Children.map(children, (child) =>
-        cloneElement(child, {
+      {Children.map(children, (child) => {
+        const childOnChange = child.props.onChange;
+        const onChange =
+          !handleChange || !childOnChange
+            ? handleChange || childOnChange
+            : (e) => {
+                childOnChange(e);
+                handleChange(e);
+              };
+
+        return cloneElement(child, {
           value: data[child.props.name],
-          onChange: handleChange,
-        })
-      )}
+          onChange,
+        });
+      })}
     </form>
   );
 }
