@@ -28,6 +28,14 @@ export function getLocalProfile() {
   }
 }
 
+export function removeLocalProfile() {
+  localStorage.removeItem(PROFILE);
+}
+
+export function onAuthChange(handleAuthChange) {
+  return client.auth.onAuthStateChange(handleAuthChange);
+}
+
 export function saveLocalProfile(profile) {
   localStorage.setItem(PROFILE, JSON.stringify(profile));
 }

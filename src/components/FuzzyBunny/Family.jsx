@@ -33,7 +33,7 @@ export default function Family({ family }) {
           initialValue={family.name}
           onEdit={handleEdit}
         />
-        <BunnyTags bunnies={family.bunnies} />
+        <BunnyTags bunnies={Family.bunnies ?? []} />
       </div>
     </li>
   );
