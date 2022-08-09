@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import { useAuth } from '../../../state/hooks/userAuth.js';
 import styles from './User.css';
 
 export default function Menu() {
+  const { signOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
 
   const className = classNames(styles.User, {
@@ -20,7 +22,9 @@ export default function Menu() {
       <button onClick={handleClick}>v</button>
       <div className={styles.UserMenu}>
         <Link to="about">Profile</Link>
-        <Link to="about">Sign Out</Link>
+        <Link to="user" onClick={signOut}>
+          Sign Out
+        </Link>
       </div>
     </div>
   );

@@ -1,5 +1,3 @@
-
-
 import { Routes as RRoutes, Route, Navigate } from 'react-router-dom';
 import ProtectedRoutes from './UserAuth/ProtectRoutes.jsx';
 import UserAuth from './UserAuth/UserAuth.jsx';
