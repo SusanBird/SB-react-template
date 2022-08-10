@@ -7,8 +7,10 @@ import {
   getProfile,
   onAuthChange,
 } from '../services/user-service.js';
+
 export const UserStateContext = createContext();
 export const UserActionContext = createContext();
+
 export default function UserProvider({ children }) {
   const [user, setUser] = useState(getUser());
   const [profile, setProfile] = useState(getLocalProfile());
@@ -31,6 +33,7 @@ export default function UserProvider({ children }) {
       saveLocalProfile(data);
     }
   };
+
   useEffect(() => {
     if (user) loadProfile();
 
@@ -51,6 +54,7 @@ export default function UserProvider({ children }) {
     user,
     profile,
   };
+
   const actionValue = useMemo(
     () => ({
       setUser,
@@ -58,6 +62,7 @@ export default function UserProvider({ children }) {
     }),
     [setUser, setProfile]
   );
+
   return (
     <UserStateContext.Provider value={stateValue}>
       <UserActionContext.Provider value={actionValue}>

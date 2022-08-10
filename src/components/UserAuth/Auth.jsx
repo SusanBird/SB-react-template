@@ -17,7 +17,7 @@ export default function Auth() {
     link: '../',
     onSubmit: signUp,
   };
-    
+
   const signInInfo = {
     header: 'Sign in to your account',
     button: 'Sign In',
@@ -25,7 +25,6 @@ export default function Auth() {
     link: 'sign-up',
     onSubmit: signIn,
   };
-
 
   return (
     <Routes>
@@ -36,7 +35,6 @@ export default function Auth() {
 }
 
 function AuthForm({ header, button, prompt, link, onSubmit }) {
-  
   return (
     <section className={styles.Auth}>
       <Form onSubmit={onSubmit}>

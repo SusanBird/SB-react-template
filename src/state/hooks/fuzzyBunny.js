@@ -5,8 +5,8 @@ import {
 } from '../context/FuzzyBunnyContext.jsx';
 import {
   getFamiliesWithBunnies,
-  addFamily,
   removeFamily,
+  addFamily,
   updateFamily,
 } from '../services/fuzzyBunnyService.js';
 import { showSuccess, showError } from '../services/toaster.js';
@@ -32,11 +32,11 @@ export function useFamilies() {
   useEffect(() => {
     if (families) return;
     let ignore = false;
-  
+
     const fetch = async () => {
       const { data, error } = await getFamiliesWithBunnies();
       if (ignore) return;
-  
+
       if (error) {
         setError(error);
       }
@@ -44,12 +44,12 @@ export function useFamilies() {
         familiesDispatch({ type: 'load', payload: data });
       }
     };
-  
+
     fetch();
-  
+
     return () => (ignore = true);
   }, []);
-  
+
   return { families, error };
 }
 
@@ -66,13 +66,12 @@ function createDispatchActions(dispatch) {
         showSuccess(successMessage);
       }
     };
-
   };
 }
 
 export function useFamilyActions() {
   const { familiesDispatch } = useContext(FuzzyBunnyActionContext);
-  
+
   const createAction = createDispatchActions(familiesDispatch);
 
   const add = createAction({
