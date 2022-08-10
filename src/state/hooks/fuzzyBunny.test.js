@@ -7,7 +7,7 @@ jest.mock('../services/fuzzyBunnyService.js', () => ({
 }));
 import { useSimpleFamilies } from './fuzzyBunny.js';
 
-test('use families returns list of families', async () => {
+xtest('use families returns list of families', async () => {
   const families = [{}, {}, {}];
   getFamiliesWithBunnies.mockResolvedValueOnce({
     data: families,
