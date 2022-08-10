@@ -1,0 +1,5 @@
+.Pokedex {
+    padding: calc(var(--padding) / 2) var(--padding);
+    display: grid;
+    gap: calc(var(--padding) / 2);
+  }
